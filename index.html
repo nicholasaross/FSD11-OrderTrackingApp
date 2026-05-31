@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nick's Cafe</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="container mt-5">
+		<h1 class="display-2 text-center my-5">
+			<img src="images/restaurant.png" width="80" height="80" class="me-3" alt="Restaurant Icon">
+			Welcome to <span class="badge text-bg-primary">Nick's Cafe</span></h1>
+		<p>Order your favorite coffee and snacks!</p>
+
+		<form id="create-order-form" class="row">
+			<h3 class="mb-3">Create Order</h3>
+			<div class="col">
+				<label for="item1" class="form-label">Item 1</label>
+				<input type="text" class="form-control" id="item1" placeholder="Enter item name" required>
+				<input type="number" class="form-control mt-2" id="quantity1" placeholder="Enter quantity" min="1" required>
+
+			</div>
+			<div class="col">
+				<label for="item2" class="form-label">Item 2</label>
+				<input type="text" class="form-control" id="item2" placeholder="Enter item name" required>
+				<input type="number" class="form-control mt-2" id="quantity2" placeholder="Enter quantity" min="1" required>
+			</div>
+			<div class="col">
+				<label for="item3" class="form-label">Item 3</label>
+				<input type="text" class="form-control" id="item3" placeholder="Enter item name" required>
+				<input type="number" class="form-control mt-2" id="quantity3" placeholder="Enter quantity" min="1" required>
+			</div>
+			<div class="col">
+				<label for="order-items" class="form-label">Order Items</label>
+				<textarea class="form-control" id="order-items" rows="3" placeholder="List your order items (e.g., 1x Latte, 2x Croissant)" required></textarea>
+			</div>
+			<button type="button" class="btn btn-primary mt-3">Place Order</button>
+		</form>
+	
+		<div class="row mt-5">
+			<div class="col">
+				<div class="card text-center" style="width: 25rem;">
+					<div class="card-header">Order ID: 20260500001,
+						<span>31/5/2026 18:56</span>
+						<img src="images/orders.png" width="40" height="40" class="me-2" alt="Orders Icon">
+						Order Summary
+					</div>
+					<div class="card-body">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">1x Latte</li>
+							<li class="list-group-item">2x Croissant</li>
+						</ul>
+					</div>
+					<div class="card-footer text-muted">Status: In Progress
+						<button class="btn btn-danger">Cancel Order</button>
+					</div>
+					</div>
+				</div>
+				<h3>Current Orders</h3>
+				<ul id="orders-list" class="list-group">
+					<!-- Orders will be dynamically added here -->
+				</ul>
+			</div>
+		</div>
+
+		<div class="row mt-5">
+			<div>
+				<div class="col-md-6">
+					<h3>Order Status</h3>
+					<ul id="order-status-list" class="list-group">
+						<!-- Order statuses will be dynamically added here -->
+					</ul>
+				</div>
+		</div>
+	
+	</div>
+	
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODIW" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+</body>
+</html>
