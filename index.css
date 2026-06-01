@@ -8,3 +8,17 @@ form#create-order-form {
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.menu-card {
+	background-color: white;
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.menu-card:hover {
+	box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+	transform: translateY(-2px);
+}
+
+.menu-card:active {
+	transform: translateY(0);
+}

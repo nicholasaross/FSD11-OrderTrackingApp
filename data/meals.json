@@ -1,0 +1,47 @@
+{
+  "category": "food",
+  "items": [
+    {
+      "id": "ramen",
+      "name": "Ramen",
+      "image": "images/meals/ramen.png",
+      "price": 11.00,
+      "ingredients": ["Ramen noodles", "Pork broth", "Soft egg", "Spring onion"]
+    },
+    {
+      "id": "seafood-pad-thai",
+      "name": "Seafood Pad Thai",
+      "image": "images/meals/seafood-pad-thai.png",
+      "price": 14.00,
+      "ingredients": ["Rice noodles", "Prawns", "Peanuts", "Tamarind sauce"]
+    },
+    {
+      "id": "massive-sushi",
+      "name": "MASSIVE Sushi",
+      "image": "images/meals/sushi.png",
+      "price": 16.00,
+      "ingredients": ["Sushi rice", "Fresh tuna", "Nori", "Wasabi"]
+    },
+    {
+      "id": "burger-meal",
+      "name": "Burger Meal",
+      "image": "images/meals/burger-meal.png",
+      "price": 12.50,
+      "ingredients": ["Beef patty", "Brioche bun", "Fries", "Drink"]
+    },
+    {
+      "id": "hot-dog",
+      "name": "Hot Dog",
+      "image": "images/meals/hot-dog.png",
+      "price": 7.50,
+      "ingredients": ["Pork sausage", "Bun", "Mustard", "Ketchup"]
+    },
+    {
+      "id": "salad-meal",
+      "name": "Garden Salad Meal",
+      "image": "images/meals/salad-meal.png",
+      "price": 9.00,
+      "ingredients": ["Mixed greens", "Tomato", "Carrot", "Water"]
+    }
+  ]
+}

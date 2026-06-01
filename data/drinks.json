@@ -1,0 +1,47 @@
+{
+  "category": "drinks",
+  "items": [
+    {
+      "id": "martini",
+      "name": "Classic Martini",
+      "image": "images/drinks/martini.png",
+      "price": 11.00,
+      "ingredients": ["Gin", "Dry vermouth", "Olive"]
+    },
+    {
+      "id": "gibson-martini",
+      "name": "Gibson Martini",
+      "image": "images/drinks/gibson-martini.png",
+      "price": 11.50,
+      "ingredients": ["Gin", "Dry vermouth", "Pickled onion"]
+    },
+    {
+      "id": "dirty-martini",
+      "name": "Dirty Martini",
+      "image": "images/drinks/dirty-martini.png",
+      "price": 11.50,
+      "ingredients": ["Gin", "Dry vermouth", "Olive brine", "Olive"]
+    },
+    {
+      "id": "lemon-drop-martini",
+      "name": "Lemon Drop Martini",
+      "image": "images/drinks/lemon-drop-martini.png",
+      "price": 12.00,
+      "ingredients": ["Vodka", "Triple sec", "Lemon juice", "Sugar rim"]
+    },
+    {
+      "id": "espresso-martini",
+      "name": "Espresso Martini",
+      "image": "images/drinks/espresso-martini.png",
+      "price": 12.50,
+      "ingredients": ["Vodka", "Espresso", "Coffee liqueur"]
+    },
+    {
+      "id": "water-bottle",
+      "name": "Bottled Water",
+      "image": "images/drinks/water-bottle.png",
+      "price": 2.00,
+      "ingredients": ["Spring water"]
+    }
+  ]
+}
