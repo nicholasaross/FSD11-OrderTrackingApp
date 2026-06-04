@@ -17,49 +17,46 @@
 			<img src="images/drinks/martini.png" width="80" height="80" class="ms-3" alt="Restaurant Icon">
 		</h1>
 
-		<section id="menu" class="my-5">
-			<h2 class="mb-4">Food Menu</h2>
+		<section id="menu" class="my-5 border rounded p-4 shadow bg-light">
+			<h2 class="badge text-bg-success fs-2 d-table mx-auto mb-4">Food Menu</h2>
 			<div id="food-menu" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
 				<!-- Food items rendered here -->
 			</div>
 
-			<h2 class="mb-4">Drinks Menu</h2>
+			<h2 class="badge text-bg-success fs-2 d-table mx-auto mb-4">Drinks Menu</h2>
 			<div id="drinks-menu" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 				<!-- Drink items rendered here -->
 			</div>
 		</section>
 
-		<div id="current-order" class="card mx-auto my-4 d-none" style="width: 25rem;">
-			<div class="card-header fw-bold">Current Order</div>
-			<div class="card-body">
-				<ul id="current-order-lines" class="list-group list-group-flush"></ul>
-			</div>
-			<div class="card-footer text-center">
-				<button type="button" id="place-order-btn" class="btn btn-primary" disabled>Place Order</button>
-			</div>
-		</div>
-	
 		<div class="row mt-5">
 			<div class="col">
-				<h3 class="mb-3">Current Orders</h3>
-				<div id="orders-container" class="d-flex flex-wrap gap-3">
-					<p id="no-orders-msg" class="text-muted">No orders yet — select items from the menu and place an order.</p>
-					<!-- Order summary cards will be dynamically added here -->
+				<h3 class="mb-3">Current Order</h3>
+				<p id="no-current-order-msg" class="text-muted">No items selected — click menu items to start an order.</p>
+				<div id="current-order" class="card order-card mx-auto my-4 d-none">
+					<div class="card-header fw-bold d-flex justify-content-between align-items-center">
+						<span>Current Order</span>
+						<img src="images/logo.png" width="40" height="40" alt="Nick's Cafe Logo">
+					</div>
+					<div class="card-body">
+						<ul id="current-order-lines" class="list-group list-group-flush"></ul>
+					</div>
+					<div class="card-footer text-center">
+						<button type="button" id="place-order-btn" class="btn btn-primary" disabled>Place Order</button>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row mt-5">
-			<div>
-				<div class="col-md-6">
-					<h3>Order Status</h3>
-					<ul id="order-status-list" class="list-group">
-						<!-- Order statuses will be dynamically added here -->
-					</ul>
+		<div class="row mt-5 mb-5">
+			<div class="col">
+				<h3 class="mb-3">Order Status</h3>
+				<div id="orders-container" class="d-flex flex-wrap gap-3">
+					<p id="no-orders-msg" class="text-muted">No orders yet — select items from the menu and place an order.</p>
+					<!-- Placed order summary cards will be dynamically added here -->
 				</div>
+			</div>
 		</div>
-	
-	</div>
 	
 
 

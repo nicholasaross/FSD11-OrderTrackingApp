@@ -14,8 +14,11 @@ const menuCardRenderers = new Map();
 
 let orderCounter = 0;
 
+// Fixed delivery charge applied to every order.
+const DELIVERY_CHARGE = 10;
+
 function formatPrice(price) {
-	return `$${Number(price).toFixed(2)}`;
+	return `£${Number(price).toFixed(2)}`;
 }
 
 function formatDateTime(date) {
@@ -80,10 +83,12 @@ function createMenuCard(item) {
 
 	function render(count) {
 		if (count > 0) {
-			countBadge.textContent = `×${count}`;
+			countBadge.textContent = `${count}x`;
 			countBadge.classList.remove("d-none");
+			button.classList.add("in-order");
 		} else {
 			countBadge.classList.add("d-none");
+			button.classList.remove("in-order");
 		}
 	}
 	menuCardRenderers.set(item.id, render);
@@ -107,15 +112,18 @@ function renderMenu(items, containerId) {
 function renderCurrentOrder() {
 	const panel = document.getElementById("current-order");
 	const list = document.getElementById("current-order-lines");
+	const placeholder = document.getElementById("no-current-order-msg");
 	const entries = [...cart.values()].filter((e) => e.count > 0);
 
 	if (entries.length === 0) {
 		panel.classList.add("d-none");
+		placeholder.classList.remove("d-none");
 		list.innerHTML = "";
 		return;
 	}
 
 	panel.classList.remove("d-none");
+	placeholder.classList.add("d-none");
 
 	let total = 0;
 	const rows = entries.map(({ item, count }) => {
@@ -125,14 +133,17 @@ function renderCurrentOrder() {
 				<span><span class="badge bg-success rounded-pill me-2">${count}x</span>${item.name}</span>
 				<span class="d-flex align-items-center gap-2">
 					<span>${formatPrice(item.price * count)}</span>
-					<span class="btn-group btn-group-sm">
-						<button type="button" class="btn btn-outline-secondary cur-dec" data-id="${item.id}" title="Remove one ${item.name}">−</button>
-						<button type="button" class="btn btn-outline-danger cur-remove" data-id="${item.id}" title="Remove all ${item.name}">×</button>
-					</span>
+					<button type="button" class="badge bg-danger rounded-pill border-0 cur-dec fw-bold" data-id="${item.id}" title="Remove one ${item.name}">-1</button>
+					<button type="button" class="btn btn-outline-danger btn-sm cur-remove fw-bold" data-id="${item.id}" title="Remove all ${item.name}">X</button>
 				</span>
 			</li>`;
 	});
+	total += DELIVERY_CHARGE;
 	rows.push(`
+		<li class="list-group-item d-flex justify-content-between align-items-center">
+			<span>Delivery</span>
+			<span>${formatPrice(DELIVERY_CHARGE)}</span>
+		</li>
 		<li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
 			<span>Total</span>
 			<span>${formatPrice(total)}</span>
@@ -167,8 +178,7 @@ function removeOrderCard(card) {
 
 function createOrderCard(orderId, lines) {
 	const card = document.createElement("div");
-	card.className = "card";
-	card.style.width = "25rem";
+	card.className = "card order-card";
 
 	let total = 0;
 	const lineItems = lines
@@ -181,24 +191,39 @@ function createOrderCard(orderId, lines) {
 			</li>`;
 		})
 		.join("");
+	total += DELIVERY_CHARGE;
 
 	card.innerHTML = `
-		<div class="card-header">Order ID: ${orderId}
-			<span class="ms-1">${formatDateTime(new Date())}</span>
-			<img src="images/orders.png" width="40" height="40" class="me-2" alt="Orders Icon">
-			Order Summary
+		<div class="card-header">
+			<div class="d-flex justify-content-between align-items-center">
+				<span>Order ID: <strong>${orderId}</strong></span>
+				<img src="images/orders.png" width="40" height="40" alt="Order List">
+			</div>
+			<hr>
+			<div class="text-center">${formatDateTime(new Date())}</div>
 		</div>
 		<div class="card-body">
 			<ul class="list-group list-group-flush">
 				${lineItems}
+				<li class="list-group-item d-flex justify-content-between align-items-center">
+					<span>Delivery</span>
+					<span>${formatPrice(DELIVERY_CHARGE)}</span>
+				</li>
 				<li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
 					<span>Total</span>
 					<span>${formatPrice(total)}</span>
 				</li>
 			</ul>
 		</div>
-		<div class="card-footer text-muted">Status: In Progress
-			<button type="button" class="btn-cancel btn btn-danger btn-sm float-end">Cancel Order</button>
+		<div class="card-footer text-muted">
+			<div class="d-flex justify-content-between align-items-center">
+				<span>Status: <strong>In Progress</strong></span>
+				<img src="images/states/order-confirmed.gif" class="order-status" width="40" height="40" alt="In Progress">
+			</div>
+			<hr>
+			<div class="text-center">
+					<button type="button" class="btn-cancel btn btn-danger btn-sm">Cancel Order</button>
+				</div>
 		</div>
 	`;
 
@@ -220,7 +245,7 @@ function placeOrder() {
 	const container = document.getElementById("orders-container");
 	const placeholder = document.getElementById("no-orders-msg");
 	if (placeholder) placeholder.remove();
-	container.appendChild(createOrderCard(orderId, lines));
+	container.prepend(createOrderCard(orderId, lines));
 
 	// Clear the current order for the next one.
 	cart.clear();

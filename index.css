@@ -22,3 +22,15 @@ form#create-order-form {
 .menu-card:active {
 	transform: translateY(0);
 }
+
+.menu-card.in-order {
+	border: 2px solid var(--bs-success) !important;
+}
+
+.order-card {
+	width: 25rem;
+}
+
+.order-status {
+	border: 2px solid var(--bs-primary);
+}
