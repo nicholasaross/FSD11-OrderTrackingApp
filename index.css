@@ -2,6 +2,31 @@ body {
 	background-color: rgba(13, 110, 253, 0.05);
 }
 
+#row1 {
+	position: sticky;
+	top: 0;
+	z-index: 1030;
+	background: #000;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	padding: 1rem;
+}
+
+#caption {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	font-size: 4rem;
+	font-weight: 300;
+	text-align: center;
+	width: 100%;
+	outline: none;
+}
+
 form#create-order-form {
 	background-color: white;
 	padding: 20px;
